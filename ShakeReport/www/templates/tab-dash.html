@@ -1,0 +1,29 @@
+<ion-view view-title="Dashboard">
+  <ion-content class="padding">
+    <h2>Welcome to Shake Report</h2>
+    <p>
+      This is an Ionic Sample application that allows user to demonstrate to use Shake to Report feature.
+    </p>
+    <p>
+      User can shake the mobile device to take a screenshot of that specific moment and open the email composer with prefilled
+      attachment and email options.
+    </p>
+    <p>
+      Try out following features. Or Shake the app to proceed with the entire routine.
+    </p>
+    <p>
+      <button class="button button-block button-positive" ng-click="vm.capture();">
+        Screen Capture
+      </button>
+      <button class="button button-block button-dark" ng-click="vm.emailkatzer();">
+        Email
+      </button>
+    </p>
+    <p>
+      <div ng-if="vm.screenshot">
+        Screenshot:
+        <img width="100%" ng-src="{{vm.screenshot}}">
+      </div>
+    </p>
+  </ion-content>
+</ion-view>
