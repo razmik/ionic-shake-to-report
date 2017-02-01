@@ -3,6 +3,8 @@ This is an Ionic Sample application that allows user to demonstrate to use Shake
 User can shake the mobile device to take a screenshot of that specific moment and open the email composer with prefilled attachment and email options.
 
 Required plugins:
+
+
 com.darktalker.cordova.screenshot 0.1.5 "Screenshot"
 com.jcjee.plugins.emailcomposer 1.4.6 "Email Composer with Attachments"
 cordova-plugin-console 1.0.5 "Console"
