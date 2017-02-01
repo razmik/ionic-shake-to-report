@@ -2,7 +2,7 @@
 This is an Ionic Sample application that allows user to demonstrate to use Shake to Report feature.
 User can shake the mobile device to take a screenshot of that specific moment and open the email composer with prefilled attachment and email options.
 
-Plugins used:
+### Plugins used:
 
 1. For screen shots: https://github.com/gitawego/cordova-screenshot
 
@@ -10,7 +10,7 @@ Plugins used:
 
 3. For Shake Identification: https://github.com/leecrossley/cordova-plugin-shake
 
-Required plugins: (Please note that most of the following plugins are dependedant on ionic framework and above 3 plugins)
+### Required plugins: (Please note that most of the following plugins are dependedant on ionic framework and above 3 plugins)
 
 
 com.darktalker.cordova.screenshot 0.1.5 "Screenshot"
@@ -36,3 +36,6 @@ cordova-plugin-statusbar 2.2.1 "StatusBar"
 cordova-plugin-whitelist 1.3.1 "Whitelist"
 
 ionic-plugin-keyboard 2.2.1 "Keyboard"
+
+
+### The demo app uses Ionic Tabs default template
