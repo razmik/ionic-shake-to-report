@@ -18,6 +18,9 @@
       <button class="button button-block button-dark" ng-click="vm.emailkatzer();">
         Email
       </button>
+      <button class="button button-block button-royal" ng-click="vm.showDetails();">
+        Show Device Details
+      </button>
     </p>
     <p>
       <div ng-if="vm.screenshot">
@@ -25,6 +28,8 @@
         <img width="100%" ng-src="{{vm.screenshot}}">
       </div>
     </p>
-    <p>Developed by: Rashmika Nawaratne</p>
   </ion-content>
+  <ion-footer-bar align-title="center" class="bar-stable">
+    <h5 class="title">Developed by: Rashmika Nawaratne</h5>
+  </ion-footer-bar>
 </ion-view>

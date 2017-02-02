@@ -1,11 +1,26 @@
 angular.module('starter.controllers', [])
 
-  .controller('DashCtrl', function ($scope, ScreenCapture, Email) {
+  .controller('DashCtrl', function ($scope, $ionicPopup, ScreenCapture, Email, AppDetails) {
     var vm = this;
     vm.screenshot = '';
     vm.screenshotFileName = 'myScreenShot';
     vm.capture = capture;
     vm.emailkatzer = emailkatzer;
+    vm.showDetails = showDetails;
+
+    function showDetails() {
+
+      AppDetails.getAll()
+        .then(function (data) {
+          $ionicPopup.alert({
+            title: 'App Data',
+            template: 'App data as follows:\n' + JSON.stringify(data) 
+          });
+        })
+        .catch(function (data) {
+          alert('Error: ' + data);
+        });
+    }
 
     function emailkatzer() {
 
@@ -24,7 +39,7 @@ angular.module('starter.controllers', [])
     }
 
     function capture() {
-      
+
       ScreenCapture.capture(vm.screenshotFileName).then(function (data) {
         vm.screenshot = data.URI;
       }).catch(function (data) {
