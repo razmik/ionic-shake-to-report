@@ -10,12 +10,16 @@ User can shake the mobile device to take a screenshot of that specific moment an
 
 3. For Shake Identification: https://github.com/leecrossley/cordova-plugin-shake
 
-### Required plugins: (Please note that most of the following plugins are dependedant on ionic framework and above 3 plugins)
+4. For App Version: https://github.com/whiteoctober/cordova-plugin-app-version
+
+### Required plugins: (Please note that most of the following plugins are dependedant on ionic framework and above 4 plugins)
 
 
 com.darktalker.cordova.screenshot 0.1.5 "Screenshot"
 
 com.jcjee.plugins.emailcomposer 1.4.6 "Email Composer with Attachments"
+
+cordova-plugin-app-version 0.1.9 "AppVersion"
 
 cordova-plugin-console 1.0.5 "Console"
 
