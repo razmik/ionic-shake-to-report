@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
-.run(function($ionicPlatform, ShakeToReport) {
+.run(function($ionicPlatform, ShakeToReport, ShakeToReportRefactored) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -23,7 +23,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
     if(shake){
       //Lower the sensitivity number - higher the sensitivity
-      shake.startWatch(ShakeToReport.onShake, 25);      
+      shake.startWatch(ShakeToReportRefactored.onShake, 25);      
     }
 
   });

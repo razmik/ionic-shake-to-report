@@ -112,17 +112,17 @@ angular.module('starter.services', [])
         AppDetails.getAll()
           .then(function (data) {
 
-            bodyText = 'Dear Customer Service, \n\n' + 
-                        'I would like to report an issue with Approve.ly. My device details are: \n\n' + 
-                        'Approve.ly Version: ' + data.appVersion + '\n' + 
-                        'Location: ' + JSON.stringify(window.location) + '\n' + 
-                        'Platform: ' + data.platform + '\n' + 
-                        'Model: ' + data.model + '\n' + 
-                        'Device Version: ' + data.deviceVersion + '\n' + 
-                        'Manufacturer: ' + data.manufacturer + '\n' + 
-                        'Cordova version: ' + data.cordova + '\n' + 
-                        'User Agent: ' + data.userAgent + '\n' + 
-                        'Language: ' + data.language + '\n\n' ;
+            bodyText = 'Dear Customer Service, \n\n' +
+              'I would like to report an issue with Approve.ly. My device details are: \n\n' +
+              'Approve.ly Version: ' + data.appVersion + '\n' +
+              'Location: ' + JSON.stringify(window.location) + '\n' +
+              'Platform: ' + data.platform + '\n' +
+              'Model: ' + data.model + '\n' +
+              'Device Version: ' + data.deviceVersion + '\n' +
+              'Manufacturer: ' + data.manufacturer + '\n' +
+              'Cordova version: ' + data.cordova + '\n' +
+              'User Agent: ' + data.userAgent + '\n' +
+              'Language: ' + data.language + '\n\n';
 
             Email.send(to, attachments, subject, bodyText, false)
               .then(function () {
@@ -140,6 +140,58 @@ angular.module('starter.services', [])
       }).catch(function (data) {
         alert(data);
       });
+
+    }
+
+    return {
+      onShake: onShake
+    };
+  })
+
+
+
+  .factory('ShakeToReportRefactored', function ($q, Email, ScreenCapture, AppDetails) {
+
+    var loadScreenshot = function (filename) {
+      return ScreenCapture
+        .capture(filename)
+        .then(function (data) {
+          return data.URI;
+        })
+    },
+      loadAppDetails = function (screenshotURI) {
+        return AppDetails
+          .getAll()
+          .then(function (data) {
+            return { appData: data, screenshotURI: screenshotURI };
+          })
+      },
+      loadEmail = function (data) {
+        var to = ['razmik89@gmail.com'];
+        var attachments = data.screenshotURI.replace("data:image/jpeg;base64,", "base64:attachment.png//");
+        var subject = 'Shake to Report Refactored - katzer';
+        var bodyText = materialize(data.appData);
+
+        return Email
+          .send(to, attachments, subject, bodyText, false);
+      },
+      materialize = function (data) {
+        return 'Dear Customer Service, \n\n' +
+          'I would like to report an issue with Approve.ly. My device details are: \n\n' +
+          'Approve.ly Version: ' + data.appVersion + '\n' +
+          'Location: ' + JSON.stringify(window.location) + '\n' +
+          'Platform: ' + data.platform + '\n' +
+          'Model: ' + data.model + '\n' +
+          'Device Version: ' + data.deviceVersion + '\n' +
+          'Manufacturer: ' + data.manufacturer + '\n' +
+          'Cordova version: ' + data.cordova + '\n' +
+          'User Agent: ' + data.userAgent + '\n' +
+          'Language: ' + data.language + '\n\n';
+      }
+
+    function onShake() {
+
+      loadScreenshot('myScreenShot').then(loadAppDetails).then(loadEmail).catch(function (err) { alert('Error: ' + err) });
 
     }
 
